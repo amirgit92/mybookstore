@@ -4,27 +4,34 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "authors")
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Author {
+
+    public Author(){
+        this.books = new ArrayList<>();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private Timestamp birthDate;
+    private Date birthDate;
 
-    @ManyToMany
-    @JoinTable(
-            name = "authors-books",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")
-    )
-    private Collection<Book> books;
+    @ManyToMany(mappedBy = "authors")
+//    @JoinTable(
+//            name = "authors_books",
+//            joinColumns = @JoinColumn(name = "author_id"),
+//            inverseJoinColumns = @JoinColumn(name = "book_id")
+//    )
+    private List<Book> books;
 
 }
