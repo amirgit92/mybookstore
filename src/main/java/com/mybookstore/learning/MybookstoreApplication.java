@@ -8,9 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 import java.sql.Timestamp;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @SpringBootApplication
 public class MybookstoreApplication {
@@ -20,7 +20,7 @@ public class MybookstoreApplication {
     }
 
     @Bean
-    CommandLineRunner run(IBookRepository bookRepository, IAuthorRepository authorRepository){
+    CommandLineRunner run(IBookRepository bookRepository, IAuthorRepository authorRepository) {
         return args -> {
             Author author1 = new Author();
             author1.setBirthDate(Timestamp.valueOf("1372-01-12"));
@@ -28,8 +28,8 @@ public class MybookstoreApplication {
             authorRepository.save(author1);
 
             Author author2 = new Author();
-            author1.setBirthDate(Timestamp.valueOf("1372-02-12"));
-            author1.setName("author2Name");
+            author2.setBirthDate(Timestamp.valueOf("1372-02-12"));
+            author2.setName("author2Name");
             authorRepository.save(author2);
 
             Author author3 = new Author();
@@ -38,23 +38,58 @@ public class MybookstoreApplication {
             authorRepository.save(author3);
 
             Author author4 = new Author();
-            author1.setBirthDate(Timestamp.valueOf("1372-04-12"));
-            author1.setName("author4Name");
+            author3.setBirthDate(Timestamp.valueOf("1372-04-12"));
+            author3.setName("author4Name");
             authorRepository.save(author4);
 
 
             Book book1 = new Book();
             book1.setTitle("book1Title");
             book1.setPublishDate(Timestamp.valueOf("1390-01-12"));
+            book1.setAuthors(collectAuthors(author1,author2));
             bookRepository.save(book1);
 
-            List<Book> bookList = null;
-            bookList.add(book1);
+            Book book2 = new Book();
+            book2.setTitle("book2Title");
+            book2.setPublishDate(Timestamp.valueOf("1390-02-12"));
+            book2.setAuthors(collectAuthors(author3,author4));
+            bookRepository.save(book2);
 
-            List<Author> authorList = null;
-            authorList.add();
+            Book book3 = new Book();
+            book3.setTitle("book3Title");
+            book3.setPublishDate(Timestamp.valueOf("1390-03-12"));
+            book3.setAuthors(collectAuthors(author1,author3));
+            bookRepository.save(book3);
 
-            author1.setBooks(bookList);
-            book1.setAuthors(authorList);
+            Book book4 = new Book();
+            book4.setTitle("book4Title");
+            book4.setPublishDate(Timestamp.valueOf("1390-04-12"));
+            book4.setAuthors(collectAuthors(author2,author4));
+            bookRepository.save(book4);
+
+            Book book5 = new Book();
+            book5.setTitle("book5Title");
+            book5.setPublishDate(Timestamp.valueOf("1390-05-12"));
+            book5.setAuthors(collectAuthors(author1,author2,author3));
+            bookRepository.save(book5);
+
+            Book book6 = new Book();
+            book6.setTitle("book6Title");
+            book6.setPublishDate(Timestamp.valueOf("1390-06-12"));
+            book6.setAuthors(collectAuthors(author2,author3,author4));
+            bookRepository.save(book6);
+
+
+
         };
+    }
+
+    private Collection<Author> collectAuthors(Author... authors){
+        Collection<Author> authorCollection = new ArrayList<>();
+
+        for (Author author : authors){
+            authorCollection.add(author);
+        }
+        return authorCollection;
+    }
 }
