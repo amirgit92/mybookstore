@@ -9,9 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -50,8 +48,6 @@ public class MybookstoreApplication {
             Book book1 = new Book();
             book1.setTitle("book1Title");
             book1.setPublishDate(Date.valueOf("1390-01-12"));
-            author1.getBooks().add(book1);
-//            book1.setAuthors(collectAuthors(author1,author2));
             bookRepository.save(book1);
 
 
@@ -86,13 +82,41 @@ public class MybookstoreApplication {
             bookRepository.save(book6);
 
 
-//            author1.getBooks().add(book2);
+            author1.getBooks().add(book2);
+            book2.getAuthors().add(author1);
+            authorRepository.save(author1);
+            bookRepository.save(book2);
+
             author2.getBooks().add(book1);
+            book1.getAuthors().add(author2);
+            authorRepository.save(author2);
+            bookRepository.save(book1);
+
+
             author2.getBooks().add(book3);
+            book3.getAuthors().add(author2);
+            authorRepository.save(author2);
+            bookRepository.save(book3);
+
             author3.getBooks().add(book3);
+            book3.getAuthors().add(author3);
+            authorRepository.save(author3);
+            bookRepository.save(book3);
+
             author3.getBooks().add(book4);
+            book4.getAuthors().add(author3);
+            authorRepository.save(author3);
+            bookRepository.save(book4);
+
             author4.getBooks().add(book5);
+            book5.getAuthors().add(author4);
+            authorRepository.save(author4);
+            bookRepository.save(book5);
+
             author4.getBooks().add(book6);
+            book6.getAuthors().add(author4);
+            authorRepository.save(author4);
+            bookRepository.save(book6);
         };
     }
 
