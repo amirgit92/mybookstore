@@ -2,14 +2,12 @@ package com.mybookstore.learning.API;
 
 import com.mybookstore.learning.entity.Category;
 import com.mybookstore.learning.service_interface.ICategoryService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@RestController
+@RequestMapping("/category")
 public class CategoryAPI {
     ICategoryService service;
 

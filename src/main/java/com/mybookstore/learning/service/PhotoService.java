@@ -3,10 +3,12 @@ package com.mybookstore.learning.service;
 import com.mybookstore.learning.entity.Photo;
 import com.mybookstore.learning.repository_interface.IPhotoRepository;
 import com.mybookstore.learning.service_interface.IPhotoService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PhotoService implements IPhotoService {
     IPhotoRepository repository;
     @Override

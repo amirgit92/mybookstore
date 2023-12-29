@@ -2,14 +2,13 @@ package com.mybookstore.learning.API;
 
 import com.mybookstore.learning.entity.Author;
 import com.mybookstore.learning.service_interface.IAuthorService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/author")
 public class AuthorAPI {
 
     IAuthorService service;
