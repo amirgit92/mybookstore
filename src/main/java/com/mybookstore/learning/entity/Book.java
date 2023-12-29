@@ -2,10 +2,8 @@ package com.mybookstore.learning.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,9 +14,10 @@ import java.util.List;
 //@NoArgsConstructor
 public class Book {
 
-    public Book(){
+    public Book() {
         this.authors = new ArrayList<>();
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
