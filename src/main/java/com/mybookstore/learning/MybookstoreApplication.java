@@ -2,18 +2,21 @@ package com.mybookstore.learning;
 
 import com.mybookstore.learning.entity.Author;
 import com.mybookstore.learning.entity.Book;
-import com.mybookstore.learning.repository.IAuthorRepository;
-import com.mybookstore.learning.repository.IBookRepository;
+import com.mybookstore.learning.repository_interface.IAuthorRepository;
+import com.mybookstore.learning.repository_interface.IBookRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @SpringBootApplication
+//@EnableWebMvc
 public class MybookstoreApplication {
 
     public static void main(String[] args) {
